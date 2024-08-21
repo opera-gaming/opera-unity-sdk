@@ -1,0 +1,2 @@
+This web template is a part of Opera GX SDK. It should be located in the folder "Assets/WebGLTemplates" to be available for the use in the project.
+It is copied from "Packages" to "Assets" by the package utility on installation.

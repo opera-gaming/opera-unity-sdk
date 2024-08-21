@@ -1,0 +1,31 @@
+{
+  "runOptions": {
+    "dataUrl": "Build/{{{ DATA_FILENAME }}}",
+    "frameworkUrl": "Build/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_THREADS
+    "workerUrl": "Build/{{{ WORKER_FILENAME }}}",
+#endif
+#if USE_WASM
+    "codeUrl": "Build/{{{ CODE_FILENAME }}}",
+#endif
+#if MEMORY_FILENAME
+    "memoryUrl": "Build/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+    "symbolsUrl": "Build/{{{ SYMBOLS_FILENAME }}}",
+#endif
+    "streamingAssetsUrl": "StreamingAssets",
+    "companyName": {{{ JSON.stringify(COMPANY_NAME) }}},
+    "productName": {{{ JSON.stringify(PRODUCT_NAME) }}},
+    "productVersion": {{{ JSON.stringify(PRODUCT_VERSION) }}}
+  },
+  "pageData": {
+    "backgroundColor": "{{{ BACKGROUND_COLOR }}}",
+    "backgroundFilename": "{{{ BACKGROUND_FILENAME }}}",
+    "height": "{{{ HEIGHT }}}",
+    "loaderFilename": "{{{ LOADER_FILENAME }}}",
+    "productName": "{{{ PRODUCT_NAME }}}",
+    "productVersion": "{{{ PRODUCT_VERSION }}}",
+    "width": "{{{ WIDTH }}}"
+  }
+}

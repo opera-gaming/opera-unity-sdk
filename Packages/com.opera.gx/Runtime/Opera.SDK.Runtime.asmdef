@@ -1,0 +1,16 @@
+{
+    "name": "Opera.SDK.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f3757f75b6412d14fabc3220be2d0b67"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

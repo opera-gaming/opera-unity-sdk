@@ -1,0 +1,20 @@
+{
+    "name": "Opera.SDK.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a2f89ab6f6bb16b45a93e48ca00f3ddf",
+        "GUID:d6d38525ebda429448fa1fd0a37505a7",
+        "GUID:f3757f75b6412d14fabc3220be2d0b67"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

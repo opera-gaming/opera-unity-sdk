@@ -45,9 +45,10 @@ const doRequest = (fetchResource, fetchOptions, callbackReceiver) => {
 Module.JsGetFullVersionPaymentStatus = function(callbackReceiverPtr, apiDomainPtr) {
     const [callbackReceiver, apiDomain] = UTF8ToStringMany([callbackReceiverPtr, apiDomainPtr])
     const gameId = getParam("game")
+    const trackId = getParam("track")
 
     doRequest(
-        `${apiDomain}gg/games/${gameId}/full-version`,
+        `${apiDomain}gg/games/${gameId}/full-version?trackId=${trackId}`,
         { credentials: "include" },
         callbackReceiver,
     )

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4823fa2893254747b283fb1860ca7fb, type: 3}
+  m_Name: ServerSettings_sandbox
+  m_EditorClassIdentifier: 
+  serverUrl: https://api.sandbox.gxc.gg/
+  oauthServer: https://oauth2.opera-api.com/oauth2/v1/

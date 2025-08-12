@@ -80,5 +80,4 @@ GxGamesBuild.zip
 /[Aa]ssets/[Oo]pera[Ss][Dd][Kk].meta
 
 # Docfx output.
-/docfx/_site
-/docfx/api
+dev-only/docfx/api

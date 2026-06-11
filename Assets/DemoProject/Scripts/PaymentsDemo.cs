@@ -22,7 +22,7 @@ namespace Opera
 
             GxGames.TriggerPayment("test-id", (id) =>
             {
-                Debug.Log($"Payment completed for {id}");
+                Debug.Log($"Payment request finalized for {id}");
                 CheckPayment();
             });
         }

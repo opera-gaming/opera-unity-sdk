@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4823fa2893254747b283fb1860ca7fb, type: 3}
   m_Name: ServerSettings_sandbox
   m_EditorClassIdentifier: 
-  serverUrl: https://api.sandbox.gxc.gg/
+  serverUrl: https://api.sandbox.gx.games/
   oauthServer: https://oauth2.opera-api.com/oauth2/v1/

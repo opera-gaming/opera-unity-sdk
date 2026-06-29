@@ -37,9 +37,9 @@ namespace Opera
             var allGamesCachedData = new CachedCloudData<GamesResponseApi, GamesDataApi, GameDataApi[]>(operaGxGetRequest, authorization, serverSettings, "gamedev/games?pageSize=1000", gamesSessionStorage, data => data.games);
             var allGroupsCachedData = new CachedCloudData<GroupsResponseApi, GroupsDataApi, GroupDataApi[]>(operaGxGetRequest, authorization, serverSettings, "gamedev/studios?pageSize=1000", groupsSessionStorage, data => data.studios);
             var profileCachedData = new CachedCloudData<ProfileResponseApi, ProfileDataApi, ProfileDataApi>(operaGxGetRequest, authorization, serverSettings, "gamedev/profile", profileSessionStorage, data => data);
-            var refetchables = new IRefetchable[] { allGamesCachedData, allGroupsCachedData, profileCachedData };
+            var refetchables = new IRefetchable[] { profileCachedData, allGamesCachedData, allGroupsCachedData };
 
-            var synchronizer = new GameSynchronizer(refetchables, gameDataStorage, allGroupsCachedData, allGamesCachedData, userInterface);
+            var synchronizer = new GameSynchronizer(refetchables, gameDataStorage, allGroupsCachedData, allGamesCachedData, profileCachedData, userInterface);
 
             var validNamesChecker = new OperaGxValidNamesChecker();
             var sizeAnalyzer = new GameSizeAnalyzer(gameDataStorage, userInterface);

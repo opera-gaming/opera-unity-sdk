@@ -67,6 +67,12 @@ namespace Opera
                     var errors = jsonUtility.FromJson<GameResponseApi>(serverResponse)?.errors;
                     // TODO: convert error codes into messages
                     userInterface.Log($"Error on fetching from {requestPath}: " + string.Join("; ", errors?.Select(error => error.code) ?? new string[0]));
+
+                    if (errors?.Length == 1 && errors[0].code == "sign_in_required")
+                    {
+                        userInterface.Log("Request returned \"sign_in_required\". This may mean that your registration is not completed. Please complete your registration on GX Dev and try again.");
+                    }
+
                 } // end if
                 else
                 {

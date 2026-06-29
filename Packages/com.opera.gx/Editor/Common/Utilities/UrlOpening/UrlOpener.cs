@@ -31,8 +31,6 @@ namespace Opera
 
         public void OpenOperaGXBrowser(string _url)
         {
-            userInterface.Log("OpenOperaGXBrowser");
-
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 List<string> candidateBrowsers = new List<string>();

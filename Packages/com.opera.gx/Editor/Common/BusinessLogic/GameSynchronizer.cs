@@ -11,16 +11,24 @@ namespace Opera
         private readonly ILocalGameData gameDataStorage;
         private readonly ICachedData<GroupDataApi[]> groupsStorage;
         private readonly ICachedData<GameDataApi[]> gamesStorage;
+        private readonly ICachedData<ProfileDataApi> profileStorage;
         private readonly IUserInterface userInterface;
         private readonly GroupForNewGameFinder groupForNewGameFinder = new GroupForNewGameFinder();
         private readonly BuildVersionsSynchronizer versionsSynchronizer = new BuildVersionsSynchronizer();
 
-        public GameSynchronizer(IRefetchable[] refetchables, ILocalGameData gameDataStorage, ICachedData<GroupDataApi[]> groupsStorage, ICachedData<GameDataApi[]> gamesStorage, IUserInterface userInterface)
+        public GameSynchronizer(
+            IRefetchable[] refetchables,
+            ILocalGameData gameDataStorage,
+            ICachedData<GroupDataApi[]> groupsStorage,
+            ICachedData<GameDataApi[]> gamesStorage,
+            ICachedData<ProfileDataApi> profileStorage,
+            IUserInterface userInterface)
         {
             this.refetchables = refetchables ?? throw new ArgumentNullException(nameof(refetchables));
             this.gameDataStorage = gameDataStorage ?? throw new ArgumentNullException(nameof(gameDataStorage));
             this.groupsStorage = groupsStorage ?? throw new ArgumentNullException(nameof(groupsStorage));
             this.gamesStorage = gamesStorage ?? throw new ArgumentNullException(nameof(gamesStorage));
+            this.profileStorage = profileStorage ?? throw new ArgumentNullException(nameof(profileStorage));
             this.userInterface = userInterface ?? throw new ArgumentNullException(nameof(userInterface));
         }
 
@@ -40,6 +48,13 @@ namespace Opera
 
             foreach (var refetchable in refetchables)
                 refetchSuccess &= refetchable.RefetchData();
+
+            if (string.IsNullOrEmpty(profileStorage.Data.username))
+            {
+                userInterface.LogWarning("Your username is empty. This may mean that your registration " +
+                    "is not completed. Please complete your registration on GX Dev " +
+                    "and try again.");
+            }
 
             return refetchSuccess;
         }

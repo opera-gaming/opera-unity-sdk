@@ -86,6 +86,7 @@ namespace Opera
 
             var isNewGame = gameOptions[selectedGameIndex].IsNewGame;
             isGameNameValid = businessLogic.IsGameNameValid();
+            var isWebGlModuleInstalled = BuildPipeline.IsBuildTargetSupported(BuildTargetGroup.WebGL, BuildTarget.WebGL);
             
             // Render
             EditorGUIUtility.labelWidth = 240;
@@ -95,10 +96,11 @@ namespace Opera
             Space(12);
 
             Label("Authorization on GX.Games", EditorStyles.boldLabel);
+            var indicatedProfileName = string.IsNullOrEmpty(businessLogic.ProfileName) ? "[Username Not Set]" : businessLogic.ProfileName;
             Horizontal(() =>
             {
                 W(() => Button(EditorGUIUtility.IconContent("TreeEditor.Refresh"), Width(24), Height(24)), iconSize: 16, onClick: onAuthorizeButtonClick);
-                Label(businessLogic.IsAuthorized ? $"You are authorized as {businessLogic.ProfileName}" : "You are not authorzied", style: Styles.AuthorizedLabelStyle, Height(24));
+                Label(businessLogic.IsAuthorized ? $"You are authorized as {indicatedProfileName}" : "You are not authorzied", style: Styles.AuthorizedLabelStyle, Height(24));
             });
             Space(12);
 
@@ -110,7 +112,8 @@ namespace Opera
             Version("Next version", disabled: false, businessLogic.LocalGameData.NextVersion);
             Popup("Select group (for new games only)", selectedGroupIndex, groups.Select(g => g.name).ToArray(), disabled: !isNewGame, onChange: onSelectedGroupChanged);
             W(() => Button("Register on GX.Games"), disabled: !isNewGame || !isGameNameValid, onClick: businessLogic.RegisterGame);
-            W(() => Button("Build && Upload"), disabled: !isGameNameValid, onClick: () => businessLogic.BuildAndUploadGame(GxBusinessLogicSingleton.BUILD_DIRECTORY));
+            W(() => Button("Build && Upload"), disabled: !isGameNameValid || !isWebGlModuleInstalled, onClick: () => businessLogic.BuildAndUploadGame(GxBusinessLogicSingleton.BUILD_DIRECTORY));
+            if (!isWebGlModuleInstalled) EditorGUILayout.HelpBox("WebGL Build Support module is not installed. Please install it via Unity Hub menu to enable building for WebGL.", MessageType.Warning);
             Space(12);
 
             LinkButton("Edit Game on Opera", businessLogic.LocalGameData.EditUrl);
